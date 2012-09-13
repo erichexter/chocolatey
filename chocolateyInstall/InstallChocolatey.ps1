@@ -28,6 +28,7 @@ $file = Join-Path $tempDir "chocolatey.zip"
 # download the package
 Write-Host "Downloading $url to $file"
 $downloader = new-object System.Net.WebClient
+$downloader.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 $downloader.DownloadFile($url, $file)
 
 # unzip the package
